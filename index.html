@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website Zezes</title>
+    <style>
+        /* 1. Background Biru Soft */
+        body {
+            background-color: #e6f2ff; 
+            font-family: 'Cambria', serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        /* 2. Judul Utama */
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: normal;
+            line-height: 1.3;
+        }
+
+        /* 3. Area Amplop */
+        .envelope-wrapper {
+            position: relative;
+            display: block;
+            cursor: pointer;
+            width: 400px; 
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: opacity 0.4s ease;
+        }
+
+        #suratTerbuka {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            pointer-events: none; 
+        }
+
+        .envelope-wrapper:hover {
+            transform: scale(1.03);
+        }
+
+        /* 4. Bagian Teks Bawah Amplop */
+        .click-text {
+            font-size: 20px;
+            color: #555;
+            margin-top: 5px; 
+            font-style: italic;
+            transition: opacity 0.3s ease;
+        }
+
+        #tutupInstruksi {
+            display: none;
+            font-size: 16px;
+            color: #777;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        /* 5. Teks & LINK di Dalam Kertas (DIPERBAIKI POSISI DAN KEMIRINGANNYA) */
+        .text-overlay {
+            position: absolute;
+            top: 38%; 
+            left: 51%; /* Digeser ke kanan 1% agar pas di tengah kertas miring */
+            /* Ditambahkan rotate(-4deg) agar tulisan miring searah kertas */
+            transform: translate(-50%, -50%) rotate(-4deg); 
+            width: 65%;
+            font-size: 16px; 
+            color: #5d4037; 
+            line-height: 1.4; 
+            opacity: 0;
+            transition: opacity 0.5s ease 0.2s; 
+            font-family: 'Cambria', serif;
+            pointer-events: none; 
+            font-weight: bold;
+        }
+
+        /* Gaya Khusus untuk Link */
+        .letter-link {
+            color: #b85c38; 
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 5px; 
+            padding: 2px 5px;
+            transition: all 0.2s ease;
+        }
+
+        .letter-link:hover {
+            color: #5d4037;
+            text-decoration: underline; 
+        }
+
+        /* Efek Aktif saat diklik */
+        .envelope-wrapper.active #suratTertutup {
+            opacity: 0;
+        }
+        .envelope-wrapper.active #suratTerbuka {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .envelope-wrapper.active .text-overlay {
+            opacity: 1;
+            pointer-events: auto; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Halo!<br>Selamat Datang di Website Zestriani</h1>
+
+        <div class="envelope-wrapper" id="envelope" onclick="toggleSurat(event)">
+            <img src="picture/amplop_01.png" alt="Amplop Tertutup" id="suratTertutup" class="envelope-img">
+            
+            <img src="picture/amplop_02.png" alt="Amplop Terbuka" id="suratTerbuka" class="envelope-img">
+            
+            <div class="text-overlay" id="pesanSurat">
+                Haloo!<br>
+                <a href="kedua.html" class="letter-link" onclick="stopProp(event)">Klik Disini Yaaa Gess</a>
+            </div>
+        </div>
+
+        <div class="click-text" id="instruksi">Click Here</div>
+        <div id="tutupInstruksi">(Klik lagi pada amplop untuk menutup)</div>
+    </div>
+
+    <script>
+        function toggleSurat(event) {
+            var amplop = document.getElementById("envelope");
+            var instruksi = document.getElementById("instruksi");
+            var tutupInstruksi = document.getElementById("tutupInstruksi");
+            
+            amplop.classList.toggle("active");
+            
+            if (amplop.classList.contains("active")) {
+                instruksi.style.display = "none";
+                tutupInstruksi.style.display = "block";
+            } else {
+                instruksi.style.display = "block";
+                tutupInstruksi.style.display = "none";
+            }
+        }
+
+        function stopProp(event) {
+            event.stopPropagation();
+        }
+    </script>
+</body>
+</html>

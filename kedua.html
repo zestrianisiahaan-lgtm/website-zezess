@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Kedua - Zezes</title>
+    <style>
+        /* 1. Base Setup & Background Dasar Biru Soft */
+        html {
+            scroll-behavior: smooth; 
+        }
+        
+        body {
+            background-color: #e6f2ff; 
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* DEKORASI BULAT-BULAT DI BACKGROUND */
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 204, 213, 0.6), rgba(255, 230, 235, 0.4)); 
+            z-index: -1; 
+            pointer-events: none; 
+        }
+
+        .circle-1 { width: 150px; height: 150px; top: 15%; left: 5%; }
+        .circle-2 { width: 250px; height: 250px; top: 40%; right: -5%; background: linear-gradient(135deg, rgba(230, 242, 255, 0.9), rgba(255, 204, 213, 0.5)); }
+        .circle-3 { width: 120px; height: 120px; top: 70%; left: 8%; }
+        .circle-4 { width: 180px; height: 180px; bottom: 15%; right: 4%; }
+        .circle-5 { width: 90px; height: 90px; top: 5%; right: 15%; }
+
+        /* 2. Container Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px; 
+            background-color: transparent; 
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 45px;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px; 
+            align-items: center;
+        }
+
+        .nav-item {
+            font-family: 'Cambria', serif;
+            font-size: 20px;
+            color: #000000; 
+            text-decoration: none;
+            cursor: pointer;
+            padding: 5px 20px; 
+            border-radius: 15px; 
+            transition: background-color 0.3s ease; 
+        }
+
+        .nav-item:hover {
+            background-color: #ffe6eb; 
+            color: #000000; 
+        }
+
+        .nav-item.active {
+            background-color: #ffccd5; 
+            color: #000000; 
+            font-weight: bold; 
+        }
+
+        /* 3. Pembungkus Konten Utama */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.92); 
+            backdrop-filter: blur(5px); 
+            border-radius: 30px;
+            max-width: 900px;
+            margin: 20px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Pembagian Section Jelas */
+        .content-section {
+            width: 100%;
+            max-width: 800px;
+            padding: 60px 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* --- STYLE KHUSUS SECTION 1: PROFILE --- */
+        .profile-layout {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 40px;
+            width: 100%;
+            margin-top: 20px;
+            flex-wrap: wrap; /* PERBAIKAN: Agar foto pindah ke atas tabel jika layar kekecilan */
+        }
+
+        .profile-img-vert {
+            width: 250px; 
+            height: auto;
+            border-radius: 25px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+        }
+
+        .profile-desc {
+            font-family: 'Georgia', serif; 
+            font-size: 15px; 
+            color: #333333;
+            line-height: 1.6; 
+            margin: 0;
+            text-align: justify; 
+        }
+
+        /* Gaya Tabel Biodata Tanpa Garis */
+        .biodata-table {
+            font-family: 'Georgia', serif; 
+            font-size: 15px; 
+            color: #333333;
+            width: 100%;
+            max-width: 500px;
+            border-collapse: collapse;
+            flex: 1; 
+            min-width: 280px; /* PERBAIKAN: Mencegah tabel gepeng di layar HP */
+        }
+
+        .biodata-table td {
+            padding: 10px 4px;
+            vertical-align: top;
+            border: none; 
+        }
+
+        .biodata-table td:first-child {
+            width: 40%;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .biodata-table td:nth-child(2) {
+            width: 5%;
+            text-align: center;
+        }
+
+        .biodata-table td:last-child {
+            text-align: left;
+        }
+
+        /* --- STYLE KHUSUS SECTION 2: ABOUT --- */
+        .about-layout {
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            gap: 25px; 
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .about-img {
+            width: 100%;
+            max-width: 400px; 
+            height: auto;
+            border-radius: 25px; /* PERBAIKAN: Diubah ke 25px agar estetika sudut box selaras dengan komponen lain */
+            object-fit: cover; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .about-desc {
+            font-family: 'Cambria', serif; 
+            font-size: 15px; 
+            color: #444444;
+            line-height: 1.6;
+            margin: 0;
+            text-align: justify; 
+            width: 100%; 
+        }
+
+        .section-title {
+            font-family: 'Cambria', serif;
+            font-size: 32px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        /* --- STYLE KHUSUS SECTION 3: CONTACT --- */
+        .contact-link {
+            color: #e65c73;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: #333;
+            text-decoration: underline;
+        }
+
+        /* 4. Container SVG Ombak Paling Bawah (Sebagai Footer) */
+        .wave-footer {
+            width: 100%;
+            line-height: 0; 
+            margin: 0;
+            padding: 0;
+            background-color: transparent; 
+            margin-top: auto;
+        }
+
+        .wave-footer svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-circle circle-1"></div>
+    <div class="bg-circle circle-2"></div>
+    <div class="bg-circle circle-3"></div>
+    <div class="bg-circle circle-4"></div>
+    <div class="bg-circle circle-5"></div>
+
+    <header class="navbar">
+        <h1 class="logo">My Website</h1>
+        <nav class="nav-menu">
+            <a href="#profile" class="nav-item active">profile</a>
+            <a href="#about" class="nav-item">about</a>
+            <a href="#contact" class="nav-item">contact</a>
+        </nav>
+    </header>
+
+    <main class="main-container">
+
+        <section id="profile" class="content-section">
+            <div class="profile-layout">
+                <img src="picture/saya_04.jpg" alt="Foto Zezes Vertikal" class="profile-img-vert">
+                
+                <table class="biodata-table">
+                    <tr>
+                        <td>Nama</td>
+                        <td>:</td>
+                        <td>Zestriani Zefanya Zein Siahaan</td>
+                    </tr>
+                    <tr>
+                        <td>Tempat, Tanggal Lahir</td>
+                        <td>:</td>
+                        <td>Medan, 11 April 2008</td>
+                    </tr>
+                    <tr>
+                        <td>Alamat</td>
+                        <td>:</td>
+                        <td>Komplek Bougenvile Indah</td>
+                    </tr>
+                    <tr>
+                        <td>Jenis Kelamin</td>
+                        <td>:</td>
+                        <td>Perempuan</td>
+                    </tr>
+                    <tr>
+                        <td>Kewarganegaraan</td>
+                        <td>:</td>
+                        <td>Indonesia</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>:</td>
+                        <td>Mahasiswa</td>
+                    </tr>
+                    <tr>
+                        <td>Program Studi</td>
+                        <td>:</td>
+                        <td>Teknik Rekayasa Perangkat Lunak</td>
+                    </tr>
+                    <tr>
+                        <td>Hobi</td>
+                        <td>:</td>
+                        <td>Menari, Membaca, Menggibah, Makan, Tidur</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section id="about" class="content-section">
+            <h2 class="section-title">About My Website 📝</h2>
+            
+            <div class="about-layout">
+                <img src="picture/saya_02.jpg" alt="Foto About Zezes" class="about-img">
+                <p class="about-desc">
+                    Hello, everyone! Let me introduce myself. My name is Zestriani Zefanya Zein Siahaan, but you can call me Zefanya. I am eighteen years old. 
+                    I graduated from SMKN 1 Kutalimbaru, majoring in Software Engineering. During high school, I learned various things in technology and programming, such as web development, basic coding, system design, and application development. 
+                    Currently, I am a freshman at Politeknik Negeri Medan, majoring in Software Engineering Technology. I feel proud and grateful to pursue my studies in a field I am passionate about. Since my school days, I have been deeply interested in the world of technology, specifically software development and digital innovation. 
+                    In this digital era, I hope to continuously improve my skills in information technology to become a professional who can contribute meaningfully to society. 
+                </p>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <h2 class="section-title">Contact Me 📞</h2>
+            <p class="profile-desc" style="text-align: center;">
+                Halo! Terima kasih banyak sudah berkunjung ke website saya. Jika Anda tertarik untuk berkolaborasi, memiliki pertanyaan seputar rekayasa perangkat lunak, atau hanya ingin berkenalan dan menyapa, silakan hubungi saya melalui platform di bawah ini. Saya akan sangat senang bisa terhubung dengan Anda! <br><br>
+                
+                <strong>Email:</strong> <a href="mailto:zestrianisiahaanpplg2@gmail.com" class="contact-link">zestrianisiahaanpplg2@gmail.com</a><br>
+                <strong>Instagram:</strong> <a href="https://www.instagram.com/call_zefanyaaaa" target="_blank" class="contact-link">@call_zefanyaaaa</a><br>
+                <strong>YouTube:</strong> <a href="https://YouTube.com/@chanel_zezes" target="_blank" class="contact-link">Chanel Zezes</a><br><br>
+                
+                Sampai jumpa di ruang obrolan!
+            </p>
+        </section>
+
+    </main>
+
+    <div class="wave-footer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#e6f2ff" fill-opacity="1" d="M0,160L40,170.7C80,181,160,203,240,197.3C320,192,400,160,480,122.7C560,85,640,43,720,42.7C800,43,880,85,960,106.7C1040,128,1120,128,1200,112C1280,96,1360,64,1400,48L1440,32L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <script>
+        const sections = document.querySelectorAll('.content-section');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 250)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
