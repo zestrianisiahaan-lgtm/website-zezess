@@ -57,17 +57,17 @@
 
         .nav-menu {
             display: flex;
-            gap: 20px; 
+            gap: 10px; 
             align-items: center;
         }
 
         .nav-item {
             font-family: 'Cambria', serif;
-            font-size: 20px;
+            font-size: 18px;
             color: #000000; 
             text-decoration: none;
             cursor: pointer;
-            padding: 5px 20px; 
+            padding: 5px 15px; 
             border-radius: 15px; 
             transition: background-color 0.3s ease; 
         }
@@ -91,6 +91,7 @@
             background-color: rgba(255, 255, 255, 0.92); 
             backdrop-filter: blur(5px); 
             border-radius: 30px;
+            width: 90%;
             max-width: 900px;
             margin: 20px auto;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
@@ -101,8 +102,7 @@
         /* Pembagian Section Jelas */
         .content-section {
             width: 100%;
-            max-width: 800px;
-            padding: 60px 20px;
+            padding: 60px 40px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -113,16 +113,17 @@
         /* --- STYLE KHUSUS SECTION 1: PROFILE --- */
         .profile-layout {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
             gap: 40px;
             width: 100%;
             margin-top: 20px;
-            flex-wrap: wrap; /* PERBAIKAN: Agar foto pindah ke atas tabel jika layar kekecilan */
+            flex-wrap: wrap; 
         }
 
         .profile-img-vert {
-            width: 250px; 
+            width: 100%;
+            max-width: 250px; 
             height: auto;
             border-radius: 25px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
@@ -143,10 +144,9 @@
             font-size: 15px; 
             color: #333333;
             width: 100%;
-            max-width: 500px;
             border-collapse: collapse;
             flex: 1; 
-            min-width: 280px; /* PERBAIKAN: Mencegah tabel gepeng di layar HP */
+            min-width: 280px; 
         }
 
         .biodata-table td {
@@ -156,7 +156,7 @@
         }
 
         .biodata-table td:first-child {
-            width: 40%;
+            width: 35%;
             text-align: left;
             font-weight: bold;
         }
@@ -185,7 +185,7 @@
             width: 100%;
             max-width: 400px; 
             height: auto;
-            border-radius: 25px; /* PERBAIKAN: Diubah ke 25px agar estetika sudut box selaras dengan komponen lain */
+            border-radius: 25px; 
             object-fit: cover; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
@@ -215,6 +215,7 @@
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
+            word-break: break-all; /* Agar email panjang terpotong rapi di layar HP kecil */
         }
 
         .contact-link:hover {
@@ -222,7 +223,7 @@
             text-decoration: underline;
         }
 
-        /* 4. Container SVG Ombak Paling Bawah (Sebagai Footer) */
+        /* 4. Container SVG Ombak Paling Bawah */
         .wave-footer {
             width: 100%;
             line-height: 0; 
@@ -236,6 +237,55 @@
             width: 100%;
             height: auto;
             display: block;
+        }
+
+        /* ========================================================
+           PERBAIKAN UTAMA: CSS KHUSUS BIAR RAPI DI LAYAR HP (RESPONSIVE)
+           ======================================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column; /* Membuat susunan judul dan menu vertikal di HP */
+                padding: 20px;
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 35px; /* Memperkecil logo di HP agar muat */
+            }
+
+            .nav-menu {
+                width: 100%;
+                justify-content: center;
+                gap: 5px;
+            }
+
+            .nav-item {
+                font-size: 15px; /* Ukuran teks menu disesuaikan layar HP */
+                padding: 5px 10px;
+            }
+
+            .main-container {
+                width: 95%; /* Lebar kotak utama diperluas agar memaksimal layar HP */
+                margin: 10px auto;
+            }
+
+            .content-section {
+                padding: 40px 15px; /* Mengurangi padding dalam agar tidak sempit */
+            }
+
+            .profile-layout {
+                flex-direction: column; /* Foto akan berada di atas Tabel Biodata */
+                align-items: center;
+                gap: 20px;
+            }
+
+            .biodata-table td:first-child {
+                width: 40%; /* Menyesuaikan proporsi kolom tabel di HP */
+            }
+            
+            .section-title {
+                font-size: 26px; /* Mengecilkan judul section */
+            }
         }
     </style>
 </head>
@@ -269,7 +319,7 @@
                         <td>Zestriani Zefanya Zein Siahaan</td>
                     </tr>
                     <tr>
-                        <td>Tempat, Tanggal Lahir</td>
+                        <td>Tempat, Tgl Lahir</td>
                         <td>:</td>
                         <td>Medan, 11 April 2008</td>
                     </tr>
