@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Kedua - Zezes</title>
     <style>
-        /* 1. Base Setup & Background Dasar Biru Soft */
         html {
             scroll-behavior: smooth; 
         }
@@ -19,9 +18,10 @@
             flex-direction: column;
             position: relative;
             overflow-x: hidden;
+            font-family: 'Cambria', serif;
         }
 
-        /* DEKORASI BULAT-BULAT DI BACKGROUND */
+        /* DEKORASI BULAT BACKGROUND */
         .bg-circle {
             position: absolute;
             border-radius: 50%;
@@ -29,207 +29,136 @@
             z-index: -1; 
             pointer-events: none; 
         }
-
         .circle-1 { width: 150px; height: 150px; top: 15%; left: 5%; }
-        .circle-2 { width: 250px; height: 250px; top: 40%; right: -5%; background: linear-gradient(135deg, rgba(230, 242, 255, 0.9), rgba(255, 204, 213, 0.5)); }
+        .circle-2 { width: 250px; height: 250px; top: 40%; right: -5%; }
         .circle-3 { width: 120px; height: 120px; top: 70%; left: 8%; }
-        .circle-4 { width: 180px; height: 180px; bottom: 15%; right: 4%; }
-        .circle-5 { width: 90px; height: 90px; top: 5%; right: 15%; }
 
-        /* 2. Container Navbar */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px; 
-            background-color: transparent; 
-            position: relative;
-            z-index: 10;
+        /* HEADER SIMPEL TANPA MENU NAVIGASI */
+        .header-simple {
+            text-align: center;
+            padding: 30px 20px;
         }
 
         .logo {
             font-family: 'Times New Roman', Times, serif;
-            font-size: 45px;
+            font-size: 38px;
             font-weight: bold;
             color: #333;
             margin: 0;
         }
 
-        .nav-menu {
-            display: flex;
-            gap: 10px; 
-            align-items: center;
-        }
-
-        .nav-item {
-            font-family: 'Cambria', serif;
-            font-size: 18px;
-            color: #000000; 
-            text-decoration: none;
-            cursor: pointer;
-            padding: 5px 15px; 
-            border-radius: 15px; 
-            transition: background-color 0.3s ease; 
-        }
-
-        .nav-item:hover {
-            background-color: #ffe6eb; 
-            color: #000000; 
-        }
-
-        .nav-item.active {
-            background-color: #ffccd5; 
-            color: #000000; 
-            font-weight: bold; 
-        }
-
-        /* 3. Pembungkus Konten Utama */
+        /* KONTEN UTAMA LANGSUNG DI ATAS BACKGROUND */
         .main-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: rgba(255, 255, 255, 0.92); 
-            backdrop-filter: blur(5px); 
-            border-radius: 30px;
             width: 90%;
-            max-width: 900px;
-            margin: 20px auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            max-width: 800px;
+            margin: 0 auto;
             position: relative;
             z-index: 2;
         }
 
-        /* Pembagian Section Jelas */
         .content-section {
             width: 100%;
-            padding: 60px 40px;
+            padding: 40px 0;
             box-sizing: border-box;
+        }
+
+        /* --- STYLE SECTION 1: PROFILE --- */
+        .profile-layout {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-        }
-
-        /* --- STYLE KHUSUS SECTION 1: PROFILE --- */
-        .profile-layout {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
+            gap: 30px;
             width: 100%;
-            margin-top: 20px;
-            flex-wrap: wrap; 
         }
 
         .profile-img-vert {
             width: 100%;
-            max-width: 250px; 
+            max-width: 240px; 
             height: auto;
             border-radius: 25px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
         }
 
-        .profile-desc {
-            font-family: 'Georgia', serif; 
-            font-size: 15px; 
-            color: #333333;
-            line-height: 1.6; 
-            margin: 0;
-            text-align: justify; 
-        }
-
-        /* Gaya Tabel Biodata Tanpa Garis */
+        /* Tabel Biodata Lebih Rapih di HP */
         .biodata-table {
             font-family: 'Georgia', serif; 
             font-size: 15px; 
             color: #333333;
             width: 100%;
             border-collapse: collapse;
-            flex: 1; 
-            min-width: 280px; 
         }
 
         .biodata-table td {
-            padding: 10px 4px;
+            padding: 12px 4px;
             vertical-align: top;
-            border: none; 
+            border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
         }
 
         .biodata-table td:first-child {
             width: 35%;
-            text-align: left;
             font-weight: bold;
+            color: #555;
         }
         
         .biodata-table td:nth-child(2) {
             width: 5%;
-            text-align: center;
         }
 
-        .biodata-table td:last-child {
-            text-align: left;
-        }
-
-        /* --- STYLE KHUSUS SECTION 2: ABOUT --- */
+        /* --- STYLE SECTION 2: ABOUT --- */
         .about-layout {
             display: flex;
             flex-direction: column; 
             align-items: center; 
-            justify-content: center;
             gap: 25px; 
             width: 100%;
-            margin-top: 20px;
         }
 
         .about-img {
             width: 100%;
-            max-width: 400px; 
+            max-width: 350px; 
             height: auto;
             border-radius: 25px; 
-            object-fit: cover; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
 
         .about-desc {
-            font-family: 'Cambria', serif; 
-            font-size: 15px; 
+            font-size: 16px; 
             color: #444444;
             line-height: 1.6;
             margin: 0;
             text-align: justify; 
-            width: 100%; 
         }
 
         .section-title {
-            font-family: 'Cambria', serif;
-            font-size: 32px;
+            font-size: 26px;
             color: #333;
-            margin-top: 0;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid #ffccd5;
+            padding-bottom: 5px;
+            display: inline-block;
         }
 
-        /* --- STYLE KHUSUS SECTION 3: CONTACT --- */
+        /* --- STYLE SECTION 3: CONTACT --- */
+        .contact-box {
+            text-align: center;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #444;
+        }
+
         .contact-link {
             color: #e65c73;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s ease;
-            word-break: break-all; /* Agar email panjang terpotong rapi di layar HP kecil */
+            word-break: break-all;
         }
 
-        .contact-link:hover {
-            color: #333;
-            text-decoration: underline;
-        }
-
-        /* 4. Container SVG Ombak Paling Bawah */
+        /* FOOTER OMBAK */
         .wave-footer {
             width: 100%;
             line-height: 0; 
-            margin: 0;
-            padding: 0;
-            background-color: transparent; 
             margin-top: auto;
         }
 
@@ -239,52 +168,14 @@
             display: block;
         }
 
-        /* ========================================================
-           PERBAIKAN UTAMA: CSS KHUSUS BIAR RAPI DI LAYAR HP (RESPONSIVE)
-           ======================================================== */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column; /* Membuat susunan judul dan menu vertikal di HP */
-                padding: 20px;
-                gap: 15px;
-            }
-
-            .logo {
-                font-size: 35px; /* Memperkecil logo di HP agar muat */
-            }
-
-            .nav-menu {
-                width: 100%;
-                justify-content: center;
-                gap: 5px;
-            }
-
-            .nav-item {
-                font-size: 15px; /* Ukuran teks menu disesuaikan layar HP */
-                padding: 5px 10px;
-            }
-
-            .main-container {
-                width: 95%; /* Lebar kotak utama diperluas agar memaksimal layar HP */
-                margin: 10px auto;
-            }
-
-            .content-section {
-                padding: 40px 15px; /* Mengurangi padding dalam agar tidak sempit */
-            }
-
+        /* Penyesuaian khusus Laptop/Tablet agar ke samping */
+        @media (min-width: 600px) {
             .profile-layout {
-                flex-direction: column; /* Foto akan berada di atas Tabel Biodata */
-                align-items: center;
-                gap: 20px;
+                flex-direction: row;
+                align-items: flex-start;
             }
-
-            .biodata-table td:first-child {
-                width: 40%; /* Menyesuaikan proporsi kolom tabel di HP */
-            }
-            
-            .section-title {
-                font-size: 26px; /* Mengecilkan judul section */
+            .logo {
+                font-size: 45px;
             }
         }
     </style>
@@ -294,21 +185,14 @@
     <div class="bg-circle circle-1"></div>
     <div class="bg-circle circle-2"></div>
     <div class="bg-circle circle-3"></div>
-    <div class="bg-circle circle-4"></div>
-    <div class="bg-circle circle-5"></div>
 
-    <header class="navbar">
+    <header class="header-simple">
         <h1 class="logo">My Website</h1>
-        <nav class="nav-menu">
-            <a href="#profile" class="nav-item active">profile</a>
-            <a href="#about" class="nav-item">about</a>
-            <a href="#contact" class="nav-item">contact</a>
-        </nav>
     </header>
 
     <main class="main-container">
 
-        <section id="profile" class="content-section">
+        <section class="content-section">
             <div class="profile-layout">
                 <img src="picture/saya_04.jpg" alt="Foto Zezes Vertikal" class="profile-img-vert">
                 
@@ -319,7 +203,7 @@
                         <td>Zestriani Zefanya Zein Siahaan</td>
                     </tr>
                     <tr>
-                        <td>Tempat, Tgl Lahir</td>
+                        <td>Tempat, Lahir</td>
                         <td>:</td>
                         <td>Medan, 11 April 2008</td>
                     </tr>
@@ -357,9 +241,8 @@
             </div>
         </section>
 
-        <section id="about" class="content-section">
-            <h2 class="section-title">About My Website 📝</h2>
-            
+        <section class="content-section">
+            <center><h2 class="section-title">About My Website 📝</h2></center>
             <div class="about-layout">
                 <img src="picture/saya_02.jpg" alt="Foto About Zezes" class="about-img">
                 <p class="about-desc">
@@ -371,17 +254,19 @@
             </div>
         </section>
 
-        <section id="contact" class="content-section">
-            <h2 class="section-title">Contact Me 📞</h2>
-            <p class="profile-desc" style="text-align: center;">
-                Halo! Terima kasih banyak sudah berkunjung ke website saya. Jika Anda tertarik untuk berkolaborasi, memiliki pertanyaan seputar rekayasa perangkat lunak, atau hanya ingin berkenalan dan menyapa, silakan hubungi saya melalui platform di bawah ini. Saya akan sangat senang bisa terhubung dengan Anda! <br><br>
-                
-                <strong>Email:</strong> <a href="mailto:zestrianisiahaanpplg2@gmail.com" class="contact-link">zestrianisiahaanpplg2@gmail.com</a><br>
-                <strong>Instagram:</strong> <a href="https://www.instagram.com/call_zefanyaaaa" target="_blank" class="contact-link">@call_zefanyaaaa</a><br>
-                <strong>YouTube:</strong> <a href="https://YouTube.com/@chanel_zezes" target="_blank" class="contact-link">Chanel Zezes</a><br><br>
-                
-                Sampai jumpa di ruang obrolan!
-            </p>
+        <section class="content-section">
+            <center><h2 class="section-title">Contact Me 📞</h2></center>
+            <div class="contact-box">
+                <p>
+                    Halo! Terima kasih banyak sudah berkunjung ke website saya. Jika Anda tertarik untuk berkolaborasi, memiliki pertanyaan seputar rekayasa perangkat lunak, atau hanya ingin berkenalan dan menyapa, silakan hubungi saya melalui platform di bawah ini. Saya akan sangat senang bisa terhubung dengan Anda! <br><br>
+                    
+                    <strong>Email:</strong> <a href="mailto:zestrianisiahaanpplg2@gmail.com" class="contact-link">zestrianisiahaanpplg2@gmail.com</a><br>
+                    <strong>Instagram:</strong> <a href="https://www.instagram.com/call_zefanyaaaa" target="_blank" class="contact-link">@call_zefanyaaaa</a><br>
+                    <strong>YouTube:</strong> <a href="https://YouTube.com/@chanel_zezes" target="_blank" class="contact-link">Chanel Zezes</a><br><br>
+                    
+                    Sampai jumpa di ruang obrolan!
+                </p>
+            </div>
         </section>
 
     </main>
@@ -391,29 +276,6 @@
             <path fill="#e6f2ff" fill-opacity="1" d="M0,160L40,170.7C80,181,160,203,240,197.3C320,192,400,160,480,122.7C560,85,640,43,720,42.7C800,43,880,85,960,106.7C1040,128,1120,128,1200,112C1280,96,1360,64,1400,48L1440,32L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
         </svg>
     </div>
-
-    <script>
-        const sections = document.querySelectorAll('.content-section');
-        const navItems = document.querySelectorAll('.nav-item');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= (sectionTop - 250)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === `#${current}`) {
-                    item.classList.add('active');
-                }
-            });
-        });
-    </script>
 
 </body>
 </html>
